@@ -1,0 +1,19 @@
+using UnityEngine;
+
+public class CreditText : MonoBehaviour
+{
+    [Header("落下スピード")]
+    public float fallSpeed = 2.0f;
+
+    void Update()
+    {
+        // 毎フレーム、下へ移動する
+        transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
+
+        // 画面外に出たら消去する
+        if (transform.position.y < -6.0f)
+        {
+            Destroy(gameObject);
+        }
+    }
+}
