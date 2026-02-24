@@ -37,6 +37,21 @@ public class ReticleController : MonoBehaviour
             {
                 Instantiate(explosionPrefab, hit.collider.transform.position, Quaternion.identity);
             }
+            // 当たった相手(hit.collider.gameObject)にくっついている
+            // "TextShatterEffect" というスクリプトを探す
+            TextShatterEffect shatterScript = hit.collider.gameObject.GetComponent<TextShatterEffect>();
+
+            // もしそのスクリプトが見つかったら
+            if (shatterScript != null)
+            {
+                // バラバラにする命令を出す！
+                shatterScript.Shatter();
+            }
+            else
+            {
+                // もしバラバラ化スクリプトが付いてない普通の敵なら、今まで通りただ消す
+                Destroy(hit.collider.gameObject);
+            }
             Destroy(hit.collider.gameObject);
         }
     }
