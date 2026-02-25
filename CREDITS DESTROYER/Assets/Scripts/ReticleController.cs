@@ -3,11 +3,12 @@ using UnityEngine;
 public class ReticleController : MonoBehaviour
 {
     public GameObject explosionPrefab;
-
+    public AudioClip shootSound;
     void Start()
     {
         // OS標準の矢印カーソルを消す
         Cursor.visible = false;
+
     }
 
     void Update()
@@ -20,6 +21,11 @@ public class ReticleController : MonoBehaviour
         // 2. 左クリックで射撃
         if (Input.GetMouseButtonDown(0))
         {
+            // ★追加：クリックされたら、カメラの位置で射撃音を鳴らす
+            if (shootSound != null)
+            {
+                AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
+            }
             Shoot(worldPos);
         }
     }

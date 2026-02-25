@@ -5,7 +5,7 @@ using TMPro; // TextMeshProを使うために必要
 public class TextShatterEffect : MonoBehaviour
 {
     private TMP_Text originalTextComponent;
-
+    public AudioClip shatterSound;
     void Awake()
     {
         originalTextComponent = GetComponent<TMP_Text>();
@@ -14,6 +14,11 @@ public class TextShatterEffect : MonoBehaviour
     // この関数が外部から呼ばれると、バラバラになる
     public void Shatter()
     {
+        // ★追加：砕ける瞬間に、カメラの位置で破壊音を鳴らす
+        if (shatterSound != null)
+        {
+            AudioSource.PlayClipAtPoint(shatterSound, Camera.main.transform.position);
+        }
         // 最新の文字情報を強制的に更新
         originalTextComponent.ForceMeshUpdate();
         TMP_TextInfo textInfo = originalTextComponent.textInfo;
