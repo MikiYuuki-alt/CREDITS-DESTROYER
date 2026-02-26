@@ -10,7 +10,7 @@ public class CreditText : MonoBehaviour
         //落下
         transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
 
-        // 画面外に出たら消去する
+        // 画面外に出たら消去
         if (transform.position.y < -6.0f)
         {
             Destroy(gameObject);
