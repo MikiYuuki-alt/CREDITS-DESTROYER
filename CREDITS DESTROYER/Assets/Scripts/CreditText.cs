@@ -7,7 +7,7 @@ public class CreditText : MonoBehaviour
 
     void Update()
     {
-        // 毎フレーム、下へ移動する
+        //落下
         transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
 
         // 画面外に出たら消去する
