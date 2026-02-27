@@ -55,15 +55,14 @@ public class TextShatterEffect : MonoBehaviour
 
             // --- 物理演算を追加して落下させる ---
             Rigidbody2D rb = piece.AddComponent<Rigidbody2D>();
+            rb.gravityScale = 0.5f;
             // 少しだけランダムな方向に弾けさせる（お好みで調整）
             Vector2 randomDir = new Vector2(Random.Range(-2f, 2f), Random.Range(0.5f, 2f));
             rb.AddForce(randomDir, ForceMode2D.Impulse);
             // 回転力も少し加える
             rb.AddTorque(Random.Range(-5f, 5f), ForceMode2D.Impulse);
 
-            // --- 破片のお掃除 ---
-            // 3秒後に破片を自動で消す（メモリ節約）
-            Destroy(piece, 3.0f);
+            piece.AddComponent<PieceFadeOut>();
         }
 
         // 最後に、元の大きなテキスト自体を消す
