@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8403973957566325565}
   - component: {fileID: 2717494741242842445}
   - component: {fileID: 5285208899797614944}
-  - component: {fileID: 5818296886936890046}
   m_Layer: 0
   m_Name: Director
   m_TagString: Enemy
@@ -255,17 +254,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextShatterEffect
   shatterSound: {fileID: 8300000, guid: 99bb3ec59cc0aec4ea6d78073c6438f8, type: 3}
---- !u!114 &5818296886936890046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3564443821536597781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8926894c83a51b34c90fe0ec01f74e6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceFadeOut
-  delay: 1.05
-  fadeDuration: 1
