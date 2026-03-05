@@ -23,6 +23,7 @@ public class SpecialTextShatter : MonoBehaviour
 
     public void Shatter()
     {
+        GameManager.instance.TakeDamage();
         // ★追加：砕ける瞬間に、強烈なフラッシュとシェイクを実行！（強さ0.3f、時間0.4秒）
         if (postEffect != null)
         {
