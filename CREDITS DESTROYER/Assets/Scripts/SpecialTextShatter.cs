@@ -14,7 +14,7 @@ public class SpecialTextShatter : MonoBehaviour
     void Awake()
     {
         originalTextComponent = GetComponent<TextMeshPro>();
-        // ★追加：カメラにくっついている演出用スクリプトを探して記憶
+        // カメラにくっついている演出用スクリプトを探して記憶
         if (Camera.main != null)
         {
             postEffect = Camera.main.GetComponent<PostProcessingEffect>();
@@ -24,7 +24,7 @@ public class SpecialTextShatter : MonoBehaviour
     public void Shatter()
     {
         GameManager.instance.TakeDamage();
-        // ★追加：砕ける瞬間に、強烈なフラッシュとシェイクを実行！（強さ0.3f、時間0.4秒）
+        // 砕ける瞬間に、強烈なフラッシュとシェイクを実行！（強さ0.3f、時間0.4秒）
         if (postEffect != null)
         {
             postEffect.PlaySpecialEffect(0.3f, 0.4f);
