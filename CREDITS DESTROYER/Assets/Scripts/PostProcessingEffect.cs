@@ -68,7 +68,7 @@ public class PostProcessingEffect : MonoBehaviour
             // カメラの位置にオフセットを適用
             transform.localPosition = originalPos + new Vector3(x, y, 0f);
 
-            yield return null; // 1フレーム待つ
+            yield return null; 
         }
 
         // 最後にカメラの位置を元に戻す
