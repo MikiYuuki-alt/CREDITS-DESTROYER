@@ -35,7 +35,7 @@ public class PieceFadeOut : MonoBehaviour
             newColor.a = Mathf.Lerp(startColor.a, 0f, progress);
             tmp.color = newColor;
 
-            // 完全に透明（progressが1.0以上）になったら自分を消去
+            // 完全に透明になったら自分を消去
             if (progress >= 1.0f)
             {
                 Destroy(gameObject);
