@@ -11,7 +11,7 @@ public class TextShatterEffect : MonoBehaviour
 
     void Awake()
     {
-        // アタッチされているTextMeshProを取得
+        
         originalTextComponent = GetComponent<TextMeshPro>();
     }
 
