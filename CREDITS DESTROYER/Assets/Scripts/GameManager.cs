@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
 
     void GameClear()
     {
-        if (isGameOver) return; // すでに死んでたらクリアにならない
+        if (isGameOver) return; 
 
         isClear = true;
         Debug.Log("GAME CLEAR!!（生き残った！）");
