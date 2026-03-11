@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
         }
 
         // 2. 文字を上空から画面中央(Y=0)に「0.5秒」かけて落とす
-        float dropDuration = 0.5f;
+        float dropDuration = 1.0f;
         float elapsed = 0f;
         Vector2 startPos = new Vector2(0, 800); // 始まり（上空）
         Vector2 endPos = new Vector2(0, 0);     // 終わり（中央）
