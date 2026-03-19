@@ -710,7 +710,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 832842872}
-  - component: {fileID: 832842871}
+  - component: {fileID: 832842873}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -718,20 +718,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &832842871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832842870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f90e18750a232f4583c4246cdc866ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TextSpawner
-  enemyPrefab: {fileID: 3564443821536597781, guid: 2ae1ef2e7540d87409361c6019c77fcb, type: 3}
-  spawnInterval: 2
 --- !u!4 &832842872
 Transform:
   m_ObjectHideFlags: 0
@@ -747,6 +733,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &832842873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832842870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fc2902d8afb5554da5798aa9c4e3394, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaffTextSpawner
+  enemyPrefab: {fileID: 3564443821536597781, guid: 2ae1ef2e7540d87409361c6019c77fcb, type: 3}
+  staffTitles:
+  - DIRECTOR
+  - PROGRAMMER
+  - DESIGNER
+  - SOUND
+  - QA
+  spawnInterval: 2
 --- !u!1 &1269961590
 GameObject:
   m_ObjectHideFlags: 0
