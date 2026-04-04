@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Audio; // ★AudioMixerを使うための魔法の言葉
+using UnityEngine.Audio;
 
 public class OptionManager : MonoBehaviour
 {
@@ -14,44 +14,48 @@ public class OptionManager : MonoBehaviour
 
     void Start()
     {
-        // 最初にオプション画面は閉じておく
         optionPanel.SetActive(false);
 
-        // スライダーの初期設定（音量が0にならないように 0.0001 ～ 1.0 にする）
+        // ★追加：セーブデータから音量を読み込む！（データが無ければ 1.0 にする）
+        float savedBGM = PlayerPrefs.GetFloat("SavedBGM", 1.0f);
+        float savedSE = PlayerPrefs.GetFloat("SavedSE", 1.0f);
+
         bgmSlider.minValue = 0.0001f;
         bgmSlider.maxValue = 1.0f;
-        bgmSlider.value = 1.0f; // 最初はMAX
+        bgmSlider.value = savedBGM; // スライダーの位置をセーブデータに合わせる
 
         seSlider.minValue = 0.0001f;
         seSlider.maxValue = 1.0f;
-        seSlider.value = 1.0f; // 最初はMAX
+        seSlider.value = savedSE;
 
-        // スライダーを動かした時に、下の「SetBGM」「SetSE」を実行するように設定
+        // 読み込んだ音量を実際のミキサーに反映させる
+        SetBGM(savedBGM);
+        SetSE(savedSE);
+
         bgmSlider.onValueChanged.AddListener(SetBGM);
         seSlider.onValueChanged.AddListener(SetSE);
     }
 
-    // オプションを開く
     public void OpenOption()
     {
         optionPanel.SetActive(true);
     }
 
-    // オプションを閉じる
     public void CloseOption()
     {
         optionPanel.SetActive(false);
+        PlayerPrefs.Save(); // ★追加：閉じる時に確実にセーブデータを保存する！
     }
 
-    // BGMの音量を変える（※人間の耳に自然に聞こえるよう、対数(Log10)で計算します！）
     public void SetBGM(float volume)
     {
         audioMixer.SetFloat("BGMVol", Mathf.Log10(volume) * 20f);
+        PlayerPrefs.SetFloat("SavedBGM", volume); // ★追加：動かすたびにBGM音量をセーブ
     }
 
-    // SEの音量を変える
     public void SetSE(float volume)
     {
         audioMixer.SetFloat("SEVol", Mathf.Log10(volume) * 20f);
+        PlayerPrefs.SetFloat("SavedSE", volume); // ★追加：動かすたびにSE音量をセーブ
     }
 }
