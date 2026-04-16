@@ -1186,7 +1186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a736ca7df741c4591275f43c42cc5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReticleController
-  shootSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: ce65c607c902adc47ad248992ca514c3, type: 3}
 --- !u!82 &2028587176
 AudioSource:
   m_ObjectHideFlags: 0
