@@ -585,7 +585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104b7e2713e3c374994eddf1557503c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  hp: 3
+  hp: 5
   bgmSource: {fileID: 800062558}
   resultText: {fileID: 1655504957}
   resultTextRect: {fileID: 1655504955}
