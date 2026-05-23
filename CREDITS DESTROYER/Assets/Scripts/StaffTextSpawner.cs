@@ -1,12 +1,12 @@
 using UnityEngine;
-using TMPro; // 文字(TextMeshPro)を書き換えるために必要！
+using TMPro;
 
 public class StaffTextSpawner : MonoBehaviour
 {
     [Header("生み出す敵のプレハブ")]
     public GameObject enemyPrefab;
 
-    [Header("出現させる文字のリスト（自由に追加・変更できます）")]
+    [Header("出現させる文字のリスト")]
     public string[] staffTitles = { "DIRECTOR", "PROGRAMMER", "DESIGNER", "SOUND", "QA" };
 
     [Header("何秒ごとに生み出すか")]
@@ -28,24 +28,42 @@ public class StaffTextSpawner : MonoBehaviour
     {
         if (enemyPrefab != null)
         {
-            // 出現位置をランダムに決める
             float randomX = Random.Range(-6.0f, 6.0f);
             Vector3 spawnPos = new Vector3(randomX, 7.0f, 0f);
 
-            // 1. まずはベースとなるプレハブ（器）を出現させる
             GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
 
-            // 2. リストの中からランダムに文字を1つ選ぶ
             if (staffTitles.Length > 0)
             {
                 int randomIndex = Random.Range(0, staffTitles.Length);
                 string selectedTitle = staffTitles[randomIndex];
 
-                // 3. 出現させた敵の「TextMeshPro」を見つけて、選んだ文字に書き換える！
                 TMP_Text tmp = spawnedEnemy.GetComponent<TMP_Text>();
                 if (tmp != null)
                 {
+                    // 1. まず文字をセットする
                     tmp.text = selectedTitle;
+
+                    // ----------------------------------------------------
+                    // ★ここから追加：当たり判定を文字にピッタリ合わせる魔法
+                    // ----------------------------------------------------
+                    BoxCollider2D col = spawnedEnemy.GetComponent<BoxCollider2D>();
+                    if (col != null)
+                    {
+                        // TextMeshProに「今の文字でのサイズを大至急計算して！」と命令
+                        tmp.ForceMeshUpdate();
+
+                        // 計算された文字のピッタリの横幅・縦幅を取得
+                        Vector2 textSize = tmp.textBounds.size;
+
+                        // 当たり判定(BoxCollider2D)のサイズを、文字のサイズに上書きする！
+                        // （※もし当たり判定がシビアすぎると感じたら、textSize.x + 0.5f のように少し足すと撃ちやすくなります）
+                        col.size = new Vector2(textSize.x, textSize.y);
+
+                        // 念のため、当たり判定の中心ズレをリセットしておく
+                        col.offset = Vector2.zero;
+                    }
+                    // ----------------------------------------------------
                 }
             }
         }
