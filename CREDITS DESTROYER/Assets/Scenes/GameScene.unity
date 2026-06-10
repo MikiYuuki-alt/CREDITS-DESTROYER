@@ -766,7 +766,8 @@ MonoBehaviour:
   - DESIGNER
   - SOUND
   - QA
-  spawnInterval: 1.85
+  - Illustrater
+  spawnInterval: 0.42
 --- !u!1 &1269961590
 GameObject:
   m_ObjectHideFlags: 0
